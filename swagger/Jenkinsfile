@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                bat "mvn clean install -f swagger/pom.xml"
+            }
+        }
+        stage('Test'){
+        	steps {
+        		bat "mvn test -f swagger/"
+        	}
+        }
+        stage('Package'){
+        	steps {
+        		bat "mvn package -f swagger/"
+        	}
+        }
+        stage('Deploy') {
+            steps {
+            	echo "Deploying........"
+                bat 'copy "C:\\Program Files (x86)\\Jenkins\\workspace\\springbootswaggeruiapp\\swagger\\target\\"  "C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\"' 
+            }
+        }
+        
+    }
+}
