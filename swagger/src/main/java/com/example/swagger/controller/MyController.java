@@ -28,9 +28,9 @@ public class MyController {
 		employees.add(emp2);
 	}
 	
-	@GetMapping("/hello")
+	@GetMapping("/")
 	public String sayHello() {
-		return "Hi Team !";
+		return "Hi Team ! Welcome to Web World.........";
 	}
 	
 	@GetMapping("/getAllEmployee")
